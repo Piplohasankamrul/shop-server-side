@@ -58,6 +58,7 @@ async function run() {
     // Add Orders Api
     app.post("/orders", async (req, res) => {
       const order = req.body;
+      order.createdAt = new Date();
       const result = await orderCollection.insertOne(order);
       res.json(result);
     });
